@@ -1,0 +1,8 @@
+prefix=/home/oem/catkin_ws/src/udp_tunnels/build/devel
+
+Name: udp_tunnels
+Description: Description of udp_tunnels
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/oem/catkin_ws/src/udp_tunnels/build/devel/setup.sh
