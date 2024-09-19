@@ -35,9 +35,9 @@ if __name__ == "__main__":
     try:
         capturer_node = rospy.init_node("udp_client_sbl", anonymous=True)
         # public ip of edge vm
-        socket = SendData("130.240.22.40", 30102)
+        socket = SendData("10.161.68.100", 30102)
         # sbl (altimeter) topic
-        topic = "/sbl"
+        topic = "/shafter4/sbl"
         subscriber = rospy.Subscriber(topic, Range, stack_data, callback_args=socket)
         rospy.spin()
     except rospy.ROSInterruptException:

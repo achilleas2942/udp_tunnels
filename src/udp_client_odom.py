@@ -35,9 +35,9 @@ if __name__ == "__main__":
     try:
         capturer_node = rospy.init_node("udp_client_odom", anonymous=True)
         # public ip of edge vm
-        socket = SendData("130.240.22.40", 30101)
+        socket = SendData("10.161.68.100", 30101)
         # odometry topic
-        topic = "/shafterx3/dlio/odom_node/odom"
+        topic = "/shafter4/odometry/imu"
         subscriber = rospy.Subscriber(topic, Odometry, stack_data, callback_args=socket)
         rospy.spin()
     except rospy.ROSInterruptException:

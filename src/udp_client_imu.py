@@ -35,9 +35,9 @@ if __name__ == "__main__":
     try:
         capturer_node = rospy.init_node("udp_client_imu", anonymous=True)
         # public ip of edge vm
-        socket = SendData("130.240.22.40", 30100)
+        socket = SendData("10.161.68.100", 30100)
         # imu topic
-        topic = "/mavros/imu/data"
+        topic = "/shafter4/mavros/imu/data"
         subscriber = rospy.Subscriber(topic, Imu, stack_data, callback_args=socket)
         rospy.spin()
     except rospy.ROSInterruptException:

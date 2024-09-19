@@ -5,7 +5,7 @@ import rospy
 import threading
 import socket
 import pickle
-from mavros_msgs.msg import AttitudeTarget
+from sensor_msgs.msg import Imu
 
 
 class SocketServer(threading.Thread):
@@ -42,10 +42,10 @@ class Pub_Node():
 
     def __init__(self, topic_name) -> None:
         self._rate = 100
-        self.message = AttitudeTarget()
+        self.message = Imu()
         self.checksum = 1
         self.publisher = rospy.Publisher(
-            topic_name, AttitudeTarget, queue_size=1)
+            topic_name, Imu, queue_size=1)
         self.thread = threading.Thread(target=self.run_node)
 
     def run_node(self):
@@ -67,15 +67,15 @@ class Pub_Node():
 
 if __name__ == '__main__':
     try:
-        rospy.init_node('udp_server_cmd', anonymous=True)
+        rospy.init_node('udp_server_imu', anonymous=True)
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # own ip
         s.connect(("8.8.8.8", 80))
         ip_address = s.getsockname()[0]
-        # command topic
-        topic = '/shafter4/mavros/setpoint_raw/attitude'
+        # imu topic
+        topic = '/shafter4/mavros/imu/data'
         pub_node = Pub_Node(topic)
-        udp_socket = SocketServer(ip_address, 30103, pub_node)
+        udp_socket = SocketServer(ip_address, 30100, pub_node)
         udp_socket.start()
         pub_node.start()
         rospy.spin()
