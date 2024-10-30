@@ -10,5 +10,8 @@
 
     <node pkg="udp_tunnels" type="udp_client_cmd.py" name="udp_client_cmd" output="screen">
     </node>
+
+    <node pkg="udp_tunnels" type="udp_server_points.py" name="udp_server_points" output="screen">
+    </node>
   
   </launch>
